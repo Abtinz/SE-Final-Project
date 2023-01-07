@@ -20,8 +20,13 @@ fun ActionBar(
     scope: CoroutineScope,
     scaffoldState: ScaffoldState,
     title: String,
-    //onHomeIconClick : () -> Unit
+    isHomeIcon : Boolean
 ){
+    val painterResource = when(isHomeIcon){
+        true -> { painterResource(id =R.drawable.ic_baseline_home )}
+        false -> { painterResource(id =R.drawable.ic_baseline_account_circle ) }
+    }
+
     val context = LocalContext.current
     TopAppBar(
         title = { Text(text = title) } ,
@@ -37,14 +42,16 @@ fun ActionBar(
                     , contentDescription = "Drawer Bottom" )
             }
         } ,
-
+        
         actions = {
             IconButton(onClick = {
                 //context.startActivity(Intent(context , FirstPageActivity::class.java))
             }) {
-                Icon(painter = painterResource(id =R.drawable. )
-                    , contentDescription = "Home"
-                    ,modifier = Modifier.size(35.dp))
+                Icon(painter = painterResource
+                    , contentDescription = if(isHomeIcon)"Home" else "user profile"
+                    ,modifier = Modifier.size(35.dp)
+                ,tint = colorResource(id = R.color.primary)
+                )
             }
         }
     )
