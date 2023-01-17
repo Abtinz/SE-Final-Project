@@ -1,4 +1,4 @@
-package com.siliconvalley.bilito.mainmenu.ui.theme
+package com.siliconvalley.bilito.commonServices.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
