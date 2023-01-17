@@ -16,9 +16,9 @@ import androidx.room.RoomDatabase
 abstract class UserDataBase:RoomDatabase() {
     abstract fun getUserDao(): UserDao
 
-    /*companion object{
-        //Volatile is for immidiate  /
-        @Volatile private var instance : UserDataBase? = null/
+    companion object{
+        //Volatile is for immediate running in jvm background
+        @Volatile private var instance : UserDataBase? = null
 
         private val LOCK = Any()
 
@@ -36,6 +36,6 @@ abstract class UserDataBase:RoomDatabase() {
                 instance = it
             }
         }
-    }*/
+    }
 
 }
