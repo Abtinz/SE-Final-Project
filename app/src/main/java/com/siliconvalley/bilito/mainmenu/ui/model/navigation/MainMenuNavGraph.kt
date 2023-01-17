@@ -27,7 +27,7 @@ fun SetUpNavigationGraph (navHostController: NavHostController) {
         composable(route = BilitoScreens.CinemaPageRoute.route) {
             CinemaPage(navController = navHostController)
         }
-        composable(route = BilitoScreens.MainMenu.route) {
+        composable(route = BilitoScreens.CinemaList.route) {
             CinemaList(navController = navHostController)
         }
         composable(route = BilitoScreens.MoviePageRoute.route) {

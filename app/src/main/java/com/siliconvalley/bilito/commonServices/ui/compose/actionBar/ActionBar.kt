@@ -16,8 +16,6 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ActionBar(
-    scope: CoroutineScope,
-    scaffoldState: ScaffoldState,
     title: String,
     isHomeIcon : Boolean
 ){
@@ -31,17 +29,6 @@ fun ActionBar(
         title = { Text(text = title) } ,
         backgroundColor =  colorResource(id = R.color.primary),
         contentColor = colorResource(id = R.color.onPrimary) ,
-        navigationIcon = {
-            IconButton(onClick = {
-                scope.launch {
-                    scaffoldState.drawerState.open()
-                }
-            }) {
-                Icon(imageVector = Icons.Filled.Menu
-                    , contentDescription = "Drawer Bottom" )
-            }
-        } ,
-
         actions = {
             IconButton(onClick = {
                 //context.startActivity(Intent(context , FirstPageActivity::class.java))
@@ -49,7 +36,7 @@ fun ActionBar(
                 Icon(painter = painterResource
                     , contentDescription = if(isHomeIcon)"Home" else "user profile"
                     ,modifier = Modifier.size(35.dp)
-                ,tint = colorResource(id = R.color.primary)
+                ,tint = colorResource(id = R.color.onPrimary)
                 )
             }
         }
