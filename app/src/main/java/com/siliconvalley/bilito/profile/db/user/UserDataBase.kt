@@ -33,7 +33,7 @@ abstract class UserDataBase:RoomDatabase() {
             .fallbackToDestructiveMigration()
             .build()
 
-
+        //we are building our instance here
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
             instance ?: dbBuilder(context).also {
                 instance = it
