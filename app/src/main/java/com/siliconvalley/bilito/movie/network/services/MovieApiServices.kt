@@ -1,6 +1,5 @@
 package com.siliconvalley.bilito.movie.network.services
 
-import com.siliconvalley.bilito.cinemalist.network.api.responses.cinema.Cinema
 import com.siliconvalley.bilito.movie.network.responses.movie.Message
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
 import retrofit2.http.Field
