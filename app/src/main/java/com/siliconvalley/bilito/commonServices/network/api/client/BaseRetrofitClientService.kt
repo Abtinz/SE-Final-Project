@@ -26,6 +26,7 @@ class BaseRetrofitClientService(headerTitle: String , headerText:String , url :S
                 chain.proceed(requestBuilder.build())
             }.build()
 
+        //our api service which saves api url , api convertor and api client info
         retrofit = Retrofit.Builder()
             .baseUrl(url)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
