@@ -22,6 +22,9 @@ abstract class UserDataBase:RoomDatabase() {
 
         private val LOCK = Any()
 
+        //here we build our data base
+        //we need our context which we will have in invoke
+        //a simple title and instance of db manager
         private fun dbBuilder(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             UserDataBase::class.java,
