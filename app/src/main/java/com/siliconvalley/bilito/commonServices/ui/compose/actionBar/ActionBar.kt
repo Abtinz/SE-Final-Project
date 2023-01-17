@@ -1,6 +1,5 @@
-package com.siliconvalley.bilito.commonServices.compose.actionBar
+package com.siliconvalley.bilito.commonServices.ui.compose.actionBar
 
-import android.content.Intent
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons

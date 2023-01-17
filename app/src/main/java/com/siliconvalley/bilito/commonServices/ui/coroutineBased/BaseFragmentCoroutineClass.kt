@@ -1,4 +1,4 @@
-package com.siliconvalley.bilito.commonServices.coroutineBased
+package com.siliconvalley.bilito.commonServices.ui.coroutineBased
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.siliconvalley.bilito.commonServices.compose.bottomNavigation
+package com.siliconvalley.bilito.commonServices.ui.compose.bottomNavigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope

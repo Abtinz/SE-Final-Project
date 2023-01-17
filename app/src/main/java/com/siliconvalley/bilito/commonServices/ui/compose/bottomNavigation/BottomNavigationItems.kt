@@ -1,4 +1,4 @@
-package com.siliconvalley.bilito.commonServices.compose.bottomNavigation
+package com.siliconvalley.bilito.commonServices.ui.compose.bottomNavigation
 
 data class BottomNavigationItems(
     val title: String ,
