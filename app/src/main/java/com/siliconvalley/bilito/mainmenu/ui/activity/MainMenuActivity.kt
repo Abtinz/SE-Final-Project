@@ -1,4 +1,4 @@
-package com.siliconvalley.bilito.mainmenu
+package com.siliconvalley.bilito.mainmenu.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,6 +16,6 @@ class MainMenuActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting() {
 
 }
