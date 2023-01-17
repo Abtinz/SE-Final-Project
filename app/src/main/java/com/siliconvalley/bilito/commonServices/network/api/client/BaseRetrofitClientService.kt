@@ -4,6 +4,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 //this class will help us to have header via token passing
 //header title like Authorization and url for basic url of api
@@ -24,5 +25,11 @@ class BaseRetrofitClientService(headerTitle: String , headerText:String , url :S
                     .method(originalRequest.method,originalRequest.body)
                 chain.proceed(requestBuilder.build())
             }.build()
+
+        retrofit = Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .client(okHttpClient)
+            .build()
     }
 }
