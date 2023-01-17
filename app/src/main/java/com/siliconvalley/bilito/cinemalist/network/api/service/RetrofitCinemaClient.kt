@@ -19,5 +19,7 @@ object RetrofitCinemaClient {
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 
-
+    val teacherApiService : CinemaApiService by lazy {
+        retrofit.create(CinemaApiService::class.java)
+    }
 }
