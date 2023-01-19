@@ -9,7 +9,7 @@ interface MainMenuApiService {
     @GET("main-menu/")
     suspend fun mainMenu(): MainMenuResponse
 
-    @GET("main-menu/lastet-movies")
+    @GET("main-menu/latest-movies")
     suspend fun latestMovie(): List<Movie>
     @GET("main-menu/best-movies")
     suspend fun bestMovie(): List<Movie>
