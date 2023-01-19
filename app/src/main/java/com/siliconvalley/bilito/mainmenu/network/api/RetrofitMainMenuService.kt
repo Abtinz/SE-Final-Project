@@ -1,7 +1,7 @@
-package com.siliconvalley.bilito.mainmenu.network.api.instance
+package com.siliconvalley.bilito.mainmenu.network.api
 
-import com.siliconvalley.bilito.cinemalist.network.api.service.CinemaApiService
 import com.siliconvalley.bilito.commonServices.network.api.utils.ApiUtils
+import com.siliconvalley.bilito.mainmenu.network.api.instance.MainMenuApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

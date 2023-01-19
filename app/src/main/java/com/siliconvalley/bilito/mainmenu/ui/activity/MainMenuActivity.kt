@@ -35,7 +35,7 @@ class MainMenuActivity : ComponentActivity() {
         Scaffold(
             scaffoldState = scaffoldState,
             topBar = {
-                ActionBar(title = "Shop",false)
+                ActionBar(title = "Bilito",false)
             },
             backgroundColor = colorResource(id = R.color.primary),
             bottomBar = {
