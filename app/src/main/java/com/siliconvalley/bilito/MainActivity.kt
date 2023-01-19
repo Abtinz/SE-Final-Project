@@ -10,7 +10,6 @@ import com.siliconvalley.bilito.mainmenu.ui.activity.MainMenuActivity
 
 class MainActivity : AppCompatActivity() {
 
-    @OptIn(ExperimentalPagerApi::class, ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
