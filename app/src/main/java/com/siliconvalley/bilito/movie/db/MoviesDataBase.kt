@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
  */
 @Database(
     entities = [MoviesEntity::class],
-    version = 1 ,
+    version = 3 ,
     exportSchema = false
 )
 
@@ -28,7 +28,7 @@ abstract class MoviesDataBase:RoomDatabase() {
         private fun dbBuilder(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             MoviesDataBase::class.java,
-            "movieDB"
+            "moviesDB"
         ).allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
