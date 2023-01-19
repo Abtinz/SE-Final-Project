@@ -1,5 +1,6 @@
 package com.siliconvalley.bilito.movie.network.responses.movie
 
+
 import com.siliconvalley.bilito.profile.network.api.responses.comments.Comments
 
 data class Movie(
@@ -7,11 +8,9 @@ data class Movie(
     val name : String,
     val length : String,
     val picture : String,
-    val director : List<String>,
+     val director : String,
     //val director : List<Director>
-    val actors : List<String>,
-    //val actors : List<Actors>
-    val reviews : List<Comments>,
-) {
-
-}
+    val actors : String ,
+    //val actors : List<String>
+ val reviews : List<Comments>,
+)
