@@ -1,6 +1,7 @@
 package com.siliconvalley.bilito.mainmenu.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -24,10 +25,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.siliconvalley.bilito.mainmenu.ui.viewModel.MainMenuViewModel
 import com.siliconvalley.bilito.R
+import com.siliconvalley.bilito.mainmenu.ui.model.screens.BilitoScreens
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
 
 @Composable
@@ -65,7 +68,7 @@ fun MainMenu(navController: NavHostController) {
 
             item{
                 Divider(Modifier.padding(10.dp))
-                RowMovieView(latestList.value , "Latest Movies:")
+                RowMovieView(navController,latestList.value , "Latest Movies:" )
             }
             
         }
@@ -86,7 +89,7 @@ fun MainMenu(navController: NavHostController) {
             }
         }else{
             item {
-                RowMovieView(bestList.value , "Best Movies:")
+                RowMovieView(navController,bestList.value , "Best Movies:")
             }
         }
 
@@ -112,7 +115,7 @@ fun MainMenu(navController: NavHostController) {
 }
 
 @Composable
-fun RowMovieView(movies : List<Movie> , title : String) {
+fun RowMovieView(navController: NavController,movies : List<Movie> , title : String) {
     Text(title ,
         color = colorResource(id =R.color.onPrimary),
         textAlign = TextAlign.Start,
@@ -125,7 +128,7 @@ fun RowMovieView(movies : List<Movie> , title : String) {
     LazyRow{
         item{
             movies.forEach { movie ->
-                MovieCardView(movieTitle = movie.name, movieUri = movie.picture)
+                MovieCardView(navController ,movieTitle = movie.name, movieUri = movie.picture, movieId = movie.id)
             }
         }
     }
@@ -148,11 +151,11 @@ fun MainMenuTitleCardView() {
 }
 
 @Composable
-fun MovieCardView(movieTitle :String , movieUri : String) {
-    Card(modifier = Modifier
-        .padding(10.dp)
-        .width(200.dp)
-        .height(250.dp),
+fun MovieCardView(navController: NavController,movieId:String ,movieTitle :String , movieUri : String) {
+    Card(modifier = Modifier.padding(10.dp).width(200.dp).height(250.dp)
+        .clickable {
+            navController.navigate(BilitoScreens.MoviePageRoute.passInfo(movieId))
+        },
         elevation = 4.dp,
         shape  = RoundedCornerShape(10.dp) ,
     ){
