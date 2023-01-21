@@ -6,11 +6,11 @@ import com.siliconvalley.bilito.movie.network.responses.movie.MovieResponse
 import retrofit2.http.*
 
 interface MovieApiServices {
-    @FormUrlEncoded
-    @GET("movie/")
+
+    @GET("movies/{movie_id}/{user_id}")
     suspend fun movieInformation(
-        @Query("movie_id") movie_id: String,
-        @Query("user_id") user_id: Int
+        @Path("movie_id") movie_id: String,
+        @Path("user_id") user_id: Int
     ): MovieResponse
 
     @FormUrlEncoded
