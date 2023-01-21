@@ -53,10 +53,10 @@ fun MovieSimpleView(movieSimpleData: MovieSimple) {
 
     Row{
        Card(modifier = Modifier
-           .weight(1f)
+           .weight(2f)
            .padding(10.dp)
            .fillMaxWidth()
-           .height(150.dp),
+           .height(175.dp),
            elevation = 5.dp,
            shape  = RoundedCornerShape(20.dp) ){
 
@@ -70,11 +70,11 @@ fun MovieSimpleView(movieSimpleData: MovieSimple) {
             .weight(3f)
             .padding(10.dp)
             .fillMaxWidth()
-            .height(150.dp)) {
+            .height(175.dp)) {
 
             Text(
                 movieSimpleData.name ,
-                color = Color.Black,
+                color = Color.DarkGray,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier.padding(bottom = 5.dp),
