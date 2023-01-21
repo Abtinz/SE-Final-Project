@@ -35,7 +35,7 @@ fun SetUpNavigationGraph (navHostController: NavHostController) {
         composable(route = BilitoScreens.MoviePageRoute.route,
         arguments = listOf(navArgument("movieId"){
             type = NavType.StringType
-        })) {
+        })){
             val movieId = it.arguments!!.getString("movieId")
             MoviePage(navController = navHostController, movieId = movieId!!)
         }
