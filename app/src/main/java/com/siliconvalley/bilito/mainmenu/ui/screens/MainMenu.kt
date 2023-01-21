@@ -44,9 +44,6 @@ fun MainMenu(navController: NavHostController) {
     val cinemaList = viewModel.cinemaList.collectAsState()
     val context = LocalContext.current
     LazyColumn{
-       item{
-            MainMenuTitleCardView()
-        }
 
         //api section
         viewModel.lastestMovieApiDataBase(context)
@@ -60,7 +57,7 @@ fun MainMenu(navController: NavHostController) {
         }else{
 
             item{
-                Divider(Modifier.padding(10.dp))
+                //Divider(Modifier.padding(10.dp))
                 RowMovieView(navController,latestList.value , "Latest Movies:" )
             }
             
