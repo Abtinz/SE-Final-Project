@@ -1,19 +1,25 @@
 package com.siliconvalley.bilito.movie.ui.screens
 
 import androidx.cardview.widget.CardView
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -24,15 +30,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.siliconvalley.bilito.R
+import com.siliconvalley.bilito.cinemalist.ui.screens.CinemaListView
 import com.siliconvalley.bilito.commonServices.ui.compose.reload.ReloadView
 import com.siliconvalley.bilito.movie.db.MovieSimple
 import com.siliconvalley.bilito.movie.ui.viewMdel.MovieViewModel
+import com.siliconvalley.bilito.profile.network.api.responses.comments.Comments
 
 @Composable
 fun MoviePage(navController: NavController,movieId:String) {
     val viewModel = viewModel(MovieViewModel::class.java)
     val context = LocalContext.current
     val movieSimpleData by viewModel.movieSimpleInfo.collectAsState()
+    val movieExtraData by viewModel.movieInformation.collectAsState()
     viewModel.api(movieId , context)
     LazyColumn{
         if(movieSimpleData.isEmpty()){
@@ -44,8 +53,93 @@ fun MoviePage(navController: NavController,movieId:String) {
                 MovieSimpleView(movieSimpleData[0])
             }
         }
-    }
 
+        if(movieExtraData.isEmpty()){
+            item{
+                ReloadView()
+            }
+        }else{
+            item {
+                val movieExtraData = movieExtraData[0]
+
+
+                    movieExtraData.reviews
+                    CastsView(movieExtraData.director, movieExtraData.actors)
+
+                Text(
+                    "Screener Cinemas:",
+                    color = colorResource(id = R.color.onPrimary),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(10.dp),
+                )
+
+                LazyRow {
+                    item {
+                        CinemaListView(movieExtraData.cinemas)
+                    }
+                }
+
+                Text(
+                    "Reviews:",
+                    color = colorResource(id = R.color.onPrimary),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(10.dp),
+                )
+
+                LazyRow {
+                    item {
+                        println(movieExtraData.reviews)
+                        movieExtraData.reviews.forEach {comment ->
+                            CommentsView(comment)
+                        }
+                    }
+                }
+
+
+                }
+            }
+        }
+}
+
+@Composable
+fun CastsView(director: String, actors: String) {
+    Card(border = BorderStroke(2.dp , Color.Gray) ,
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
+            .shadow(ambientColor = Color.Gray, elevation = 10.dp),
+        shape  = RoundedCornerShape(10.dp)) {
+        Column(modifier = Modifier.background(color = Color.Black)){
+            Text(
+                "Casts:" ,
+                color = Color.DarkGray,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = Modifier.padding(10.dp),
+            )
+
+            Divider(thickness = 1.dp , color = Color.Gray)
+
+            Text(
+                "Director: $director" ,
+                color = Color.DarkGray,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 15.sp,
+                modifier = Modifier.padding(10.dp)
+            )
+
+            Text(
+                "Actors: $actors" ,
+                color = Color.Gray,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 15.sp,
+                modifier = Modifier.padding(10.dp)
+            )
+        }
+
+    }
 }
 
 @Composable
@@ -58,7 +152,7 @@ fun MovieSimpleView(movieSimpleData: MovieSimple) {
            .fillMaxWidth()
            .height(175.dp),
            elevation = 5.dp,
-           shape  = RoundedCornerShape(20.dp) ){
+           shape  = RoundedCornerShape(20.dp)){
 
            Image(painter =  rememberAsyncImagePainter(model = movieSimpleData.picture),
                contentDescription = "",
@@ -100,7 +194,53 @@ fun MovieSimpleView(movieSimpleData: MovieSimple) {
                 fontSize = 16.sp,
                 modifier = Modifier.padding(bottom = 5.dp),
             )
-
         }
+    }
+}
+
+@Composable
+fun CommentsView(comment: Comments) {
+    Card(
+        modifier = Modifier
+            .padding(10.dp)
+            .width(200.dp)
+            .shadow(ambientColor = Color.Gray, elevation = 10.dp)
+            .height(200.dp),
+        elevation = 5.dp,
+        shape  = RoundedCornerShape(10.dp)){
+
+     Column{
+          Row{
+             Text(
+                comment.username ,
+                color = Color.DarkGray,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Start,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(bottom = 5.dp),
+            )
+
+            Text(
+                comment.rate.toString() ,
+                color = Color.DarkGray,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.End,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(bottom = 5.dp),
+            )
+        }
+
+         Divider(thickness = 1.dp , color = Color.Gray)
+
+         Text(
+             comment.text ,
+             color = Color.DarkGray,
+             fontWeight = FontWeight.SemiBold,
+             fontSize = 15.sp,
+             modifier = Modifier.padding(10.dp),
+             maxLines = 6
+         )
+
+      }
     }
 }

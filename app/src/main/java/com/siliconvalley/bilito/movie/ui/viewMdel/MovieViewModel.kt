@@ -49,7 +49,7 @@ class MovieViewModel:ViewModel() {
                     val movieInformationResponse = RetrofitMovieClient.movieApiService.movieInformation(id,1)
                     _movieInformation.value = listOf(movieInformationResponse)
                 }catch (e:Throwable){
-                    println(e.message)
+                    e.printStackTrace()
                 }
 
             }catch (e:Exception){
