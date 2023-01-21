@@ -2,15 +2,14 @@ package com.siliconvalley.bilito.movie.network.services
 
 import com.siliconvalley.bilito.movie.network.responses.movie.Message
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface MovieApiServices {
     @FormUrlEncoded
-    @POST("movie/")
+    @GET("movie/")
     suspend fun movieInformation(
-        @Field("movie_id") id: String
+        @Query("movie_id") movie_id: String,
+        @Query("user_id") user_id: Int
     ): Movie
 
     @FormUrlEncoded
