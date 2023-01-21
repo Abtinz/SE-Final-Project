@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -30,6 +31,7 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.siliconvalley.bilito.mainmenu.ui.viewModel.MainMenuViewModel
 import com.siliconvalley.bilito.R
+import com.siliconvalley.bilito.cinemalist.ui.screens.CinemaListView
 import com.siliconvalley.bilito.commonServices.ui.compose.reload.ReloadView
 import com.siliconvalley.bilito.mainmenu.ui.model.screens.BilitoScreens
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
@@ -42,14 +44,14 @@ fun MainMenu(navController: NavHostController) {
     val cinemaList = viewModel.cinemaList.collectAsState()
     val context = LocalContext.current
     LazyColumn{
-        item{
+       item{
             MainMenuTitleCardView()
         }
 
         //api section
         viewModel.lastestMovieApiDataBase(context)
         viewModel.bestMovieApiDataBase(context)
-        //viewModel.cinemaListApiDataBase()
+        viewModel.cinemaListApiDataBase()
 
         if(latestList.value.isEmpty()){
             item {
@@ -79,6 +81,22 @@ fun MainMenu(navController: NavHostController) {
                 ReloadView()
             }
         }else{
+            item {
+                Text(
+                    "Cinema List:",
+                    color = colorResource(id = R.color.onPrimary),
+                    textAlign = TextAlign.Start,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 22.sp,
+                    modifier = Modifier.padding(5.dp),
+                )
+
+                LazyRow{
+                    item{
+                            CinemaListView(cinemaList.value)
+                    }
+                }
+            }
 
         }
     }
@@ -109,7 +127,7 @@ fun MainMenuTitleCardView() {
     Card(modifier = Modifier
         .padding(10.dp)
         .fillMaxWidth()
-        .height(250.dp),
+        .height(100.dp),
         elevation = 2.dp,
         shape  = RoundedCornerShape(20.dp) ,
     ){
@@ -123,48 +141,23 @@ fun MainMenuTitleCardView() {
 
 @Composable
 fun MovieCardView(navController: NavController,movieId:String ,movieTitle :String , movieUri : String) {
-    Card(modifier = Modifier.padding(10.dp).width(200.dp).height(250.dp)
-        .clickable {
-            navController.navigate(BilitoScreens.MoviePageRoute.passInfo(movieId))
-        },
-        elevation = 4.dp,
-        shape  = RoundedCornerShape(10.dp) ,
-    ){
-        Column {
-            Image(
-                painter = rememberAsyncImagePainter(model = movieUri),
-                contentDescription = movieTitle,
-                modifier = Modifier.height(210.dp).fillMaxWidth(),
-                contentScale = ContentScale.Crop
-            )
-
-            Text(
-                movieTitle ,
-                color = Color.Black,
-                textAlign = TextAlign.End,
-                fontWeight = FontWeight.SemiBold,
-                fontStyle = FontStyle.Italic,
-                fontSize = 18.sp,
-                modifier = Modifier.padding(5.dp) ,
-            )
-        }
-    }
-}
-
-@Composable
-fun CinemaCardView(movieTitle :String , movieUri : String) {
     Card(modifier = Modifier
         .padding(10.dp)
         .width(200.dp)
-        .height(250.dp),
-        elevation = 4.dp,
+        .height(250.dp)
+        .clickable {
+            navController.navigate(BilitoScreens.MoviePageRoute.passInfo(movieId))
+        }
+        .shadow(ambientColor = Color.Gray, elevation = 10.dp),
         shape  = RoundedCornerShape(10.dp) ,
     ){
         Column {
             Image(
                 painter = rememberAsyncImagePainter(model = movieUri),
                 contentDescription = movieTitle,
-                modifier = Modifier.height(210.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .height(210.dp)
+                    .fillMaxWidth(),
                 contentScale = ContentScale.Crop
             )
 
