@@ -5,5 +5,5 @@ data class Comments(
     val username : String ,
     val data : String ,
     val rate : Double? ,
-    val text : Double ,
+    val text : String ,
 )

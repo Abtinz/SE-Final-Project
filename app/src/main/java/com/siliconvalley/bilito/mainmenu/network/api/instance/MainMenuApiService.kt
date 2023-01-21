@@ -13,6 +13,6 @@ interface MainMenuApiService {
     suspend fun latestMovie(): List<Movie>
     @GET("main-menu/best-movies")
     suspend fun bestMovie(): List<Movie>
-    @GET("main-menu/cinema-lists")
+    @GET("main-menu/cinema-list")
     suspend fun cinemaLists(): List<Cinema>
 }
