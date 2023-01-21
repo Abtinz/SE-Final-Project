@@ -2,6 +2,7 @@ package com.siliconvalley.bilito.movie.network.services
 
 import com.siliconvalley.bilito.movie.network.responses.movie.Message
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
+import com.siliconvalley.bilito.movie.network.responses.movie.MovieResponse
 import retrofit2.http.*
 
 interface MovieApiServices {
@@ -10,7 +11,7 @@ interface MovieApiServices {
     suspend fun movieInformation(
         @Query("movie_id") movie_id: String,
         @Query("user_id") user_id: Int
-    ): Movie
+    ): MovieResponse
 
     @FormUrlEncoded
     @POST("ticket-selection/")

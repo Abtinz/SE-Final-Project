@@ -10,6 +10,7 @@ import com.siliconvalley.bilito.commonServices.network.api.utils.ApiUtils.API_BA
 import com.siliconvalley.bilito.movie.db.MovieSimple
 import com.siliconvalley.bilito.movie.db.MoviesDataBase
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
+import com.siliconvalley.bilito.movie.network.responses.movie.MovieResponse
 import com.siliconvalley.bilito.movie.network.services.MovieApiServices
 import com.siliconvalley.bilito.movie.network.services.RetrofitMovieClient
 import com.siliconvalley.bilito.profile.db.user.UserDataBase
@@ -27,8 +28,8 @@ class MovieViewModel:ViewModel() {
     val movieSimpleInfo : StateFlow<List<MovieSimple>>
         get() = _movieSimpleInfo
 
-    private val _movieInformation  = MutableStateFlow(emptyList<Movie>())
-    val movieInformation: StateFlow<List<Movie>>
+    private val _movieInformation  = MutableStateFlow(emptyList<MovieResponse>())
+    val movieInformation: StateFlow<List<MovieResponse>>
         get() = _movieInformation
 
     fun api(id:String , context : Context){
