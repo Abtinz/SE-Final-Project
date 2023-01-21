@@ -30,6 +30,7 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.siliconvalley.bilito.mainmenu.ui.viewModel.MainMenuViewModel
 import com.siliconvalley.bilito.R
+import com.siliconvalley.bilito.commonServices.ui.compose.reload.ReloadView
 import com.siliconvalley.bilito.mainmenu.ui.model.screens.BilitoScreens
 import com.siliconvalley.bilito.movie.network.responses.movie.Movie
 
@@ -52,17 +53,7 @@ fun MainMenu(navController: NavHostController) {
 
         if(latestList.value.isEmpty()){
             item {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(75.dp) ,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    CircularProgressIndicator(color = colorResource(id =R.color.onPrimary ) ,
-                        modifier= Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(align = Alignment.Center)
-                    )
-                }
+                ReloadView()
             }
         }else{
 
@@ -75,17 +66,7 @@ fun MainMenu(navController: NavHostController) {
 
         if(bestList.value.isEmpty()){
             item {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(75.dp) ,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    CircularProgressIndicator(color = colorResource(id =R.color.onPrimary ) ,
-                        modifier= Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(align = Alignment.Center)
-                    )
-                }
+                ReloadView()
             }
         }else{
             item {
@@ -95,17 +76,7 @@ fun MainMenu(navController: NavHostController) {
 
         if(cinemaList.value.isEmpty()){
             item {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(75.dp) ,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    CircularProgressIndicator(color = colorResource(id =R.color.onPrimary ) ,
-                        modifier= Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(align = Alignment.Center)
-                    )
-                }
+                ReloadView()
             }
         }else{
 
