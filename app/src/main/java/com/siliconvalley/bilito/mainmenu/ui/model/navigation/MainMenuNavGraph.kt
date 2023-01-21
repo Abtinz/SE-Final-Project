@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.siliconvalley.bilito.cinemalist.ui.screens.CinemaList
+import com.siliconvalley.bilito.cinemalist.ui.screens.CinemaListPage
 import com.siliconvalley.bilito.cinemalist.ui.screens.CinemaPage
 import com.siliconvalley.bilito.mainmenu.ui.model.screens.BilitoScreens
 import com.siliconvalley.bilito.mainmenu.ui.screens.MainMenu
@@ -30,7 +30,7 @@ fun SetUpNavigationGraph (navHostController: NavHostController) {
             CinemaPage(navController = navHostController)
         }
         composable(route = BilitoScreens.CinemaList.route) {
-            CinemaList(navController = navHostController)
+            CinemaListPage(navController = navHostController)
         }
         composable(route = BilitoScreens.MoviePageRoute.route,
         arguments = listOf(navArgument("movieId"){
