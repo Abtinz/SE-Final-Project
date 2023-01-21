@@ -116,7 +116,7 @@ fun MainMenuTitleCardView() {
         Image(painter = painterResource(id = R.drawable.main_menu_image),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.FillBounds
         )
     }
 }
@@ -150,7 +150,6 @@ fun MovieCardView(navController: NavController,movieId:String ,movieTitle :Strin
         }
     }
 }
-
 
 @Composable
 fun CinemaCardView(movieTitle :String , movieUri : String) {
