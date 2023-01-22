@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Bilito</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="userInfo">Ⓤⓢⓔⓡ Ⓘⓝⓕⓞ</string>
+    <string name="profileimage">ProfileImage</string>
+    <string name="profileimage">ProfileImage</string>
 </resources>

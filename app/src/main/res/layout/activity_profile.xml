@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile.ui.activity.ProfileActivity">
+    android:background="@drawable/profileBackground"
+    tools:context=".profile.ui.activity.ProfileActivity"
+    tools:ignore="SpUsage">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,20 +21,85 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:background="#00000000"
+            android:backgroundTint="#00000000"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_circle_shape"
+                android:padding="@dimen/cardview_default_radius"
+                android:layout_gravity="center">
 
                 <ImageView
-                    android:id="@+id/profileImageView"
+                    android:id="@+id/ProfileImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/image_circle_shape"
+                    android:scaleType="centerCrop"
+                    android:onClick="imageEditor"
+                    android:src="@drawable/personDefault"
+                    tools:ignore="UsingOnClickInXml"
+                    android:contentDescription="ProfileImage" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@android:style/Widget.Material.TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/userInfo"
+                android:textColor="@color/onPrimary"
+                android:textSize="30dp"
+                android:textStyle="bold|italic" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_account_circle" />
-            </LinearLayout>
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="60dp"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="100dp"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewTicket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="140dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="TextView"
+                    android:textSize="20dp" />
+
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
