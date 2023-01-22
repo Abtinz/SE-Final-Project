@@ -25,26 +25,19 @@
             android:backgroundTint="#00000000"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <ImageView
+                android:id="@+id/ProfileImageView"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
                 android:background="@drawable/image_circle_shape"
-                android:padding="@dimen/cardview_default_radius"
-                android:layout_gravity="center">
+                android:scaleType="centerCrop"
+                android:onClick="imageEditor"
+                android:src="@drawable/personDefault"
+                tools:ignore="UsingOnClickInXml"
+                android:contentDescription="ProfileImage" />
 
-                <ImageView
-                    android:id="@+id/ProfileImageView"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/image_circle_shape"
-                    android:scaleType="centerCrop"
-                    android:onClick="imageEditor"
-                    android:src="@drawable/personDefault"
-                    tools:ignore="UsingOnClickInXml"
-                    android:contentDescription="ProfileImage" />
-
-            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/textView6"
@@ -54,6 +47,7 @@
                 android:gravity="center"
                 android:text="@string/userInfo"
                 android:textColor="@color/onPrimary"
+                android:layout_margin="10dp"
                 android:textSize="30dp"
                 android:textStyle="bold|italic" />
 
