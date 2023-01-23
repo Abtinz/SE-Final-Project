@@ -1,16 +1,22 @@
 package com.siliconvalley.bilito.commonServices.ui.compose.actionBar
 
+import android.content.Intent
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Observer
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.siliconvalley.bilito.R
+import com.siliconvalley.bilito.commonServices.extra.logInStatus.LoggInStatus
+import com.siliconvalley.bilito.profile.ui.activity.AuthenticationActivity
+import com.siliconvalley.bilito.profile.ui.activity.ProfileActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -25,13 +31,29 @@ fun ActionBar(
     }
 
     val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val viewModel = viewModel(LoggInStatus::class.java)
     TopAppBar(
         title = { Text(text = title) } ,
         backgroundColor =  colorResource(id = R.color.primary),
         contentColor = colorResource(id = R.color.onPrimary) ,
         actions = {
             IconButton(onClick = {
-                //context.startActivity(Intent(context , FirstPageActivity::class.java))
+                if(!isHomeIcon)
+                {
+                    viewModel.dbCheck(context)
+                    viewModel.isUserLoggedIn.observe(lifecycleOwner, Observer {
+                        if(it){
+                            context.startActivity(Intent(context , ProfileActivity::class.java))
+                        }else{
+                            context.startActivity(Intent(context , AuthenticationActivity::class.java))
+                        }
+                    })
+
+                }else{
+
+                }
+
             }) {
                 Icon(painter = painterResource
                     , contentDescription = if(isHomeIcon)"Home" else "user profile"
