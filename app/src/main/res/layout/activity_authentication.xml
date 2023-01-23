@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/signUpButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/AuthenticationBackground"
@@ -12,6 +11,7 @@
         android:id="@+id/loginCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:cardBackgroundColor="@android:color/black"
         app:cardCornerRadius="60dp"
         app:cardElevation="100dp"
@@ -80,9 +80,16 @@
             tools:ignore="UsingOnClickInXml" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/signUpButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="290dp"
+            android:layout_marginBottom="40dp"
+            android:onClick="signUpButton"
+            android:text="@string/sign_up_here"
+            android:textSize="10dp"
+            tools:ignore="SpUsage,UsingOnClickInXml" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

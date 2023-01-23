@@ -14,4 +14,8 @@ class AuthenticationActivity : AppCompatActivity() {
     fun loginButton(view: View){
 
     }
+
+    fun signUpButton(view: View){
+
+    }
 }
