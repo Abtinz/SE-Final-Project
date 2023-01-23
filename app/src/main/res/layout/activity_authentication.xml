@@ -92,4 +92,97 @@
             android:textSize="10dp"
             tools:ignore="SpUsage,UsingOnClickInXml" />
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signUpCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/black"
+        app:cardCornerRadius="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.269">
+
+        <ImageView
+            android:id="@+id/imageProfileView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_baseline_account_circle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:autofillHints="Password"
+            android:background="#FFFFFF"
+            android:ems="20"
+            android:hint="@string/passwords"
+            android:inputType="textPassword"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="153dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:autofillHints="Email"
+            android:background="#FFFFFF"
+            android:ems="20"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:autofillHints="Phone"
+            android:background="#FFFFFF"
+            android:ems="20"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="LabelFor" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

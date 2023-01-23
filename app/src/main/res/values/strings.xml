@@ -10,4 +10,7 @@
     <string name="login">Login</string>
     <string name="don_t_have_an_account_sign_up_here">Don\'t have an account? Sign Up here!</string>
     <string name="sign_up_here">Sign Up here!</string>
+    <string name="email">Email</string>
+    <string name="passwords">Password</string>
+    <string name="phone_number">Phone Number</string>
 </resources>
