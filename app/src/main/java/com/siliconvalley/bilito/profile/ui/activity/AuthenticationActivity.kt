@@ -11,8 +11,10 @@ import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.motion.widget.Key.VISIBILITY
 import com.siliconvalley.bilito.R
+import com.siliconvalley.bilito.commonServices.ui.coroutineBased.BaseActivityCoroutineClass
+import kotlinx.coroutines.launch
 
-class AuthenticationActivity : AppCompatActivity() {
+class AuthenticationActivity : BaseActivityCoroutineClass() {
     var imageUri: Uri? = null
     val imageProfileView = findViewById<ImageView>(R.id.imageProfileView)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +23,9 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     fun loginButton(view: View){
+        launch {
 
+        }
     }
 
     @SuppressLint("ResourceType")
