@@ -65,9 +65,10 @@ class MovieViewModel:ViewModel() {
     fun ticket(movieId:String,choosedCinemaId:Int) {
         viewModelScope.launch {
             try {
-                RetrofitMovieClient.movieApiService.ticket(movieId, 1, choosedCinemaId)
+                val m = RetrofitMovieClient.movieApiService.ticket(movieId, 1, choosedCinemaId)
+                println(m)
             }catch (e:Exception){
-
+                e.printStackTrace()
             }
 
         }

@@ -268,7 +268,7 @@ fun TicketGet(cinemas: List<Cinema>, movieId: String, viewModel: MovieViewModel)
                 var isCinemaChoosed by remember { mutableStateOf(false) }
                 Text(
                     cinema.name ,
-                    color = if(isCinemaChoosed)Color.DarkGray else colorResource(id = R.color.onPrimary),
+                    color = if(!isCinemaChoosed)Color.DarkGray else colorResource(id = R.color.onPrimary),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     modifier = Modifier.padding(10.dp).clickable {
