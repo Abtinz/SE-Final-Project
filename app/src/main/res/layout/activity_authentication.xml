@@ -2,19 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signUpButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/AuthenticationBackground"
     tools:context=".profile.ui.activity.AuthenticationActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/loginCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#00000000"
+        app:cardBackgroundColor="@android:color/black"
+        app:cardCornerRadius="60dp"
+        app:cardElevation="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
@@ -64,13 +68,21 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/LoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
             android:layout_marginTop="250dp"
             android:layout_marginBottom="40dp"
-            android:text="Login"
-            app:icon="@drawable/ic_baseline_login" />
+            android:onClick="loginButton"
+            android:text="@string/login"
+            app:icon="@drawable/ic_baseline_login"
+            tools:ignore="UsingOnClickInXml" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
