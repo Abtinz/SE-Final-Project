@@ -17,8 +17,8 @@
         android:theme="@style/Theme.Bilito"
         tools:targetApi="31">
         <activity
-            android:name=".AuthenticationActivity"
-            android:exported="false">
+            android:name=".profile.ui.activity.AuthenticationActivity"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name=".profile.ui.activity.ProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

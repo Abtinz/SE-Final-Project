@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profileBackground"
+    android:background="@drawable/profile_background"
     tools:context=".profile.ui.activity.ProfileActivity"
     tools:ignore="SpUsage">
 
@@ -32,11 +32,11 @@
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:background="@drawable/image_circle_shape"
-                android:scaleType="centerCrop"
+                android:contentDescription="ProfileImage"
                 android:onClick="imageEditor"
-                android:src="@drawable/personDefault"
-                tools:ignore="UsingOnClickInXml"
-                android:contentDescription="ProfileImage" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/person_default"
+                tools:ignore="UsingOnClickInXml" />
 
 
             <TextView
@@ -44,10 +44,10 @@
                 style="@android:style/Widget.Material.TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="@string/userInfo"
                 android:textColor="@color/onPrimary"
-                android:layout_margin="10dp"
                 android:textSize="30dp"
                 android:textStyle="bold|italic" />
 

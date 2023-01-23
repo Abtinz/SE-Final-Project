@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/AuthenticationBackground"
+    android:background="@drawable/authentication_background"
     tools:context=".profile.ui.activity.AuthenticationActivity">
 
     <androidx.cardview.widget.CardView
