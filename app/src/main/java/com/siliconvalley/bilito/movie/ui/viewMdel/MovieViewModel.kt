@@ -62,28 +62,14 @@ class MovieViewModel:ViewModel() {
         }
     }
 
-    fun ticketOnlineSelection(movieId:String, context :Context){
+    fun ticket(movieId:String,choosedCinemaId:Int) {
         viewModelScope.launch {
             try {
-                val user =  UserDataBase(context).getUserDao().getAllUsers()[0]
-                try {
-                    val authorization = "Token "
-                    val baseRetrofitClientService = BaseRetrofitClientService("Authorization", authorization , API_BASE_URL)
-                    val movieApi = baseRetrofitClientService.retrofit.create(MovieApiServices::class.java)
-                    try{
-                        val selectionResponse = movieApi.ticketSelection(movieId,user.id.toString())
-                        _selectionResponse.value = selectionResponse.response
-
-                    }catch (e:Throwable){
-                        println(e.message)
-                    }
-                }catch (e:Throwable){
-                    println(e.message)
-                }
-
+                RetrofitMovieClient.movieApiService.ticket(movieId, 1, choosedCinemaId)
             }catch (e:Exception){
 
             }
+
         }
     }
 }

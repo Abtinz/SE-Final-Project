@@ -22,4 +22,6 @@ object RetrofitMovieClient {
     val movieApiService : MovieApiServices by lazy {
         retrofit.create(MovieApiServices::class.java)
     }
+
+
 }

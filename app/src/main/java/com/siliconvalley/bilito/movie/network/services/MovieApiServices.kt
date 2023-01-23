@@ -13,10 +13,10 @@ interface MovieApiServices {
         @Path("user_id") user_id: Int
     ): MovieResponse
 
-    @FormUrlEncoded
-    @POST("ticket-selection/")
-    suspend fun ticketSelection(
-        @Field("movie_id") movieId: String,
-        @Field("user_id") userId: String,
+    @GET("add-ticket/{movie_id}/{user_id}/{cinema_id}")
+    suspend fun ticket(
+        @Path("movie_id") movie_id: String,
+        @Path("user_id") user_id: Int,
+        @Path("cinema_id") cinema_id: Int
     ): Message
 }

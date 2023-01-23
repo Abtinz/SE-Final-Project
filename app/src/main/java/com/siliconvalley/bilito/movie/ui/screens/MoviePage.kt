@@ -1,8 +1,10 @@
 package com.siliconvalley.bilito.movie.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -30,7 +32,6 @@ import com.siliconvalley.bilito.commonServices.ui.compose.reload.ReloadView
 import com.siliconvalley.bilito.movie.db.MovieSimple
 import com.siliconvalley.bilito.movie.ui.viewMdel.MovieViewModel
 import com.siliconvalley.bilito.profile.network.api.responses.comments.Comments
-import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun MoviePage(navController: NavController,movieId:String) {
@@ -76,7 +77,7 @@ fun MoviePage(navController: NavController,movieId:String) {
                     }
                 }
 
-                TicketGet(movieExtraData.cinemas)
+                TicketGet(movieExtraData.cinemas,movieId,viewModel)
 
                 Text(
                     "Reviews:",
@@ -243,8 +244,9 @@ fun CommentsView(comment: Comments) {
 
 
 @Composable
-fun TicketGet(cinemas: List<Cinema>) {
-
+fun TicketGet(cinemas: List<Cinema>, movieId: String, viewModel: MovieViewModel) {
+    var choosedName = ""
+    var choosedCinemaId = -1
     Card(border = BorderStroke(2.dp , Color.Gray) ,
         modifier = Modifier
             .padding(10.dp)
@@ -253,24 +255,36 @@ fun TicketGet(cinemas: List<Cinema>) {
         shape  = RoundedCornerShape(10.dp)) {
         Column(modifier = Modifier.background(color = Color.Black)){
 
-            cinemas.forEach { cinema->
-
-                //val isCinemaChoosed =
-            }
             Text(
-                "Casts:" ,
+                "Choose your movie" ,
                 color = Color.DarkGray,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier.padding(10.dp),
             )
 
-            Divider(thickness = 1.dp , color = Color.Gray)
+            cinemas.forEach { cinema->
+
+                var isCinemaChoosed by remember { mutableStateOf(false) }
+                Text(
+                    cinema.name ,
+                    color = if(isCinemaChoosed)Color.DarkGray else colorResource(id = R.color.onPrimary),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(10.dp).clickable {
+                        isCinemaChoosed = true
+                        choosedName = cinema.name
+                        /////////////
+                        choosedCinemaId = cinema.id
+                    },
+                )
+            }
 
         }
 
     }
 
+    val context = LocalContext.current
     Button(
         modifier = Modifier
             .fillMaxWidth()
@@ -281,7 +295,11 @@ fun TicketGet(cinemas: List<Cinema>) {
             pressedElevation = 10.dp,
             disabledElevation = 0.dp),
         onClick = {
-            //
+            if(choosedName == "")
+                Toast.makeText( context, "please choose your cinema",Toast.LENGTH_SHORT).show()
+            else{
+                viewModel.ticket(movieId,choosedCinemaId)
+            }
         },
         colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.onPrimary))){
 
