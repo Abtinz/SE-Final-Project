@@ -15,6 +15,7 @@ import com.siliconvalley.bilito.R
 import com.siliconvalley.bilito.commonServices.ui.coroutineBased.BaseActivityCoroutineClass
 import com.siliconvalley.bilito.databinding.ActivityAuthenticationBinding
 import com.siliconvalley.bilito.databinding.ActivityProfileBinding
+import com.siliconvalley.bilito.profile.db.user.UserDataBase
 import kotlinx.coroutines.launch
 
 class AuthenticationActivity : BaseActivityCoroutineClass() {
@@ -32,7 +33,21 @@ class AuthenticationActivity : BaseActivityCoroutineClass() {
         val password = binding.passwordInput.editText!!.text
         if(password.isNotEmpty() and username.isNotEmpty()){
             launch {
-
+                val dbManager = UserDataBase.invoke(this@AuthenticationActivity).getUserDao()
+                var isConformed = false
+                dbManager.getAllUsers().forEach {user->
+                    if(username.equals(user.username) && password.equals(user.password)){
+                        isConformed = true
+                        val userCorrect = user
+                        dbManager.deleteUser(userCorrect)
+                        dbManager.newUser(userCorrect)
+                    }
+                }
+                if(isConformed){
+                    startActivity(Intent(this@AuthenticationActivity , ProfileActivity::class.java))
+                }else{
+                    Toast.makeText(this@AuthenticationActivity,"username or password is not accepted",Toast.LENGTH_SHORT).show()
+                }
             }
         }else{
             if(password.isEmpty() and username.isNotEmpty())
