@@ -106,6 +106,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.269">
 
+        <ImageView
+            android:id="@+id/imageProfileView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_baseline_account_circle" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userName"
             android:layout_width="match_parent"
@@ -130,8 +136,13 @@
             android:autofillHints="Password"
             android:background="#FFFFFF"
             android:ems="20"
-            android:hint="Password"
+            android:hint="@string/passwords"
             android:inputType="textPassword"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
             tools:ignore="LabelFor" />
 
         <EditText
@@ -139,14 +150,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="153dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:autofillHints="Email"
             android:background="#FFFFFF"
             android:ems="20"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:autofillHints="Phone"
+            android:background="#FFFFFF"
+            android:ems="20"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
             tools:ignore="LabelFor" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
