@@ -11,7 +11,7 @@ data class User(
     val email : String ,
     val imageUri : String,
     val phone : String,
-    val token:String
+    val password:String
     //tickets
     ): Serializable {
     @PrimaryKey(autoGenerate = true)
