@@ -5,16 +5,17 @@ import android.os.Bundle
 import android.view.View
 import com.siliconvalley.bilito.R
 
-class ProfileActivity : AppCompatActivity() {
+class AuthenticationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.activity_authentication)
+    }
 
-
+    fun loginButton(view: View){
 
     }
 
-    fun imageEditor(view: View){
+    fun signUpButton(view: View){
 
     }
 }
