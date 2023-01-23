@@ -11,7 +11,7 @@
         android:id="@+id/loginCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cardBackgroundColor="@android:color/black"
         app:cardCornerRadius="60dp"
         app:cardElevation="100dp"
@@ -97,6 +97,7 @@
         android:id="@+id/signUpCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:cardBackgroundColor="@android:color/black"
         app:cardCornerRadius="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,15 +109,25 @@
 
         <ImageView
             android:id="@+id/imageProfileView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@color/onPrimary"
+            android:contentDescription="@string/profileImage"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_baseline_account_circle" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp">
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -130,7 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="160dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:autofillHints="Password"
@@ -150,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="153dp"
+            android:layout_marginTop="213dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:autofillHints="Email"
@@ -170,7 +181,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="206dp"
+            android:layout_marginTop="266dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:autofillHints="Phone"
