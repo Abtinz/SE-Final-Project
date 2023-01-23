@@ -57,7 +57,6 @@ class AuthenticationActivity : BaseActivityCoroutineClass() {
             else
                 Toast.makeText(this,"please fill username and password fields",Toast.LENGTH_SHORT).show()
         }
-
     }
 
     @SuppressLint("ResourceType")
