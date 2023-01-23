@@ -67,7 +67,7 @@ class MovieViewModel:ViewModel() {
             try {
                 val user =  UserDataBase(context).getUserDao().getAllUsers()[0]
                 try {
-                    val authorization = "Token ${user.token}"
+                    val authorization = "Token "
                     val baseRetrofitClientService = BaseRetrofitClientService("Authorization", authorization , API_BASE_URL)
                     val movieApi = baseRetrofitClientService.retrofit.create(MovieApiServices::class.java)
                     try{

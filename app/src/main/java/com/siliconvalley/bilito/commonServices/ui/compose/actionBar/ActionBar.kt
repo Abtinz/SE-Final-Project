@@ -42,11 +42,14 @@ fun ActionBar(
                 if(!isHomeIcon)
                 {
                     viewModel.dbCheck(context)
+                    var init = 0
                     viewModel.isUserLoggedIn.observe(lifecycleOwner, Observer {
-                        if(it){
+                        if(it and (init == 0)){
                             context.startActivity(Intent(context , ProfileActivity::class.java))
-                        }else{
+                            init = 1
+                        }else if(!it and (init == 0)){
                             context.startActivity(Intent(context , AuthenticationActivity::class.java))
+                            init = 1
                         }
                     })
 

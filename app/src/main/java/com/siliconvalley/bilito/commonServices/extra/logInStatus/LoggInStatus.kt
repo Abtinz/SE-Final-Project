@@ -20,4 +20,8 @@ class LoggInStatus:ViewModel() {
             _isUserLoggedIn.value = UserDataBase(context).getUserDao().getAllUsers().isNotEmpty()
         }
     }
+
+    fun done(){
+        _isUserLoggedIn.value = false
+    }
 }
