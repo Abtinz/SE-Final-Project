@@ -256,7 +256,7 @@ fun TicketGet(cinemas: List<Cinema>, movieId: String, viewModel: MovieViewModel)
         Column(modifier = Modifier.background(color = Color.Black)){
 
             Text(
-                "Choose your movie" ,
+                "Choose your Cinema" ,
                 color = Color.DarkGray,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
